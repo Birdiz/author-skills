@@ -1,0 +1,17 @@
+{
+  "name": "birdiz-author",
+  "owner": {
+    "name": "Thomas Bouzy",
+    "url": "https://github.com/Birdiz"
+  },
+  "description": "Thomas Bouzy's agent skills for novel writing, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "author-skills",
+      "source": "./",
+      "description": "Agent skills for writing a novel: strict proofreading, character and world building, continuity checks against a story bible, brainstorming, and a muse that never writes for you.",
+      "category": "writing",
+      "keywords": ["writing", "novel", "fiction", "proofreading", "worldbuilding", "continuity", "skills"]
+    }
+  ]
+}
