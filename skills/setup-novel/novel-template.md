@@ -50,8 +50,7 @@ path: bible/
 - `misleading_narration`: the narrators whose narration may mislead the
   reader (point-of-view characters, or `narrateur` for an external
   narrator); `[]` when the narration is always true in the story.
-  `check-continuity` verification reads it. Asked as « La narration
-  fait-elle foi ? », then, if not, « Quels narrateurs peuvent tromper le
-  lecteur ? ».
+  `check-continuity` verification reads it. See
+  [questions](questions.md) for how it is asked.
 - `sub_agents`: whether the agent can dispatch sub-agents; skills take the
   sequential path when `no`.

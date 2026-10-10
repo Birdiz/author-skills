@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # setup-novel
 
-Version: 0.2.0 (author skills, see CHANGELOG)
+Version: 0.3.0 (author skills, see CHANGELOG)
 
 Write `NOVEL.md` at the root of the novel project. Every other skill refuses
 to run without it. Run again to update it: read the existing file and ask
@@ -33,8 +33,9 @@ only about what changed or is missing.
    ("Grammalecte pour Python"), unzip it, run
    `python3 grammalecte-cli.py -h`. Without it, `checker: none`.
 4. **Confirm in rounds** with `grilling` in **suggest** mode, the detections
-   as recommended answers. Every question names the skill that reads its
-   answer; a question with no reader is not asked.
+   as recommended answers. Each question takes its wording, definition,
+   counter-example, examples and consequence from
+   [questions](questions.md); a question with no reader is not asked.
 5. **Write `NOVEL.md`** from [the template](novel-template.md).
 6. **Offer to seed the lexicon**: list the capitalised words that recur
    mid-sentence in the manuscript, the author sorts them (character, place,

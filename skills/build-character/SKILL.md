@@ -7,7 +7,7 @@ argument-hint: "[nom du personnage]"
 
 # build-character
 
-Version: 0.2.0 (author skills, see CHANGELOG)
+Version: 0.3.0 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, the bible, the manuscript. Output:
 `bible/characters/<slug>.md` and its lexicon entries, per `story-bible`.

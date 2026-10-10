@@ -5,7 +5,7 @@ description: Interview the author in rounds until every branch of a character, p
 
 # grilling
 
-Version: 0.2.0 (author skills, see CHANGELOG)
+Version: 0.3.0 (author skills, see CHANGELOG)
 
 The interview primitive behind `setup-novel`, `build-character`,
 `build-world`, `brainstorm` and `check-continuity`'s arbitration. Adapted
@@ -26,6 +26,22 @@ The calling skill names the mode:
 Word every question in the positive: « La narration fait-elle foi ? »,
 not « Le narrateur est-il non fiable ? ». A negated question makes "non"
 mean yes, and the author answers the opposite of what they mean.
+
+## Answerable questions
+
+- **Define the notion.** A question resting on a literary or technical
+  notion (narration qui fait foi, focalisation, concordance des temps)
+  carries, in the question itself, a one-line definition, what it is not,
+  one example, and what the answer changes. The calling skill's reference
+  is the source when it has one.
+- **Examples are claims.** An example from the manuscript is quoted with
+  chapter and line, and checked against the definition before it is shown:
+  a thought reported as a thought, or a lie in dialogue, is not narration.
+  An example from a published work comes only from the calling skill's
+  reference. With neither, say there is no example in the text yet.
+- **A question back comes first.** When the author answers with a question
+  (what it means, an example, a consequence), answer it fully, then ask
+  again with the answer folded in.
 
 ## Rounds
 

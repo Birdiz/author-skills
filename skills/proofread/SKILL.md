@@ -7,7 +7,7 @@ argument-hint: "[chapitres, ex. ch3 | ch3-ch7 | tout]"
 
 # proofread
 
-Version: 0.2.0 (author skills, see CHANGELOG)
+Version: 0.3.0 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, `bible/LEXICON.md` and `.proofread/intentional.md` if
 they exist, the chapters named in the argument (ask if none). Output:

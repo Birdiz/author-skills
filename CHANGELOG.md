@@ -3,6 +3,14 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.3.0 (2026-10-10)
+
+`grilling` defines every notion it asks about (definition, what it is not,
+an example, what the answer changes), answers the author's questions back
+before asking again, and takes examples only from the manuscript (quoted)
+or from a skill's reference. `setup-novel` asks from a new reference,
+`questions.md`, with vetted examples. No format change.
+
 ## 0.2.0 (2026-10-10)
 
 **Breaking (`NOVEL.md`).** `unreliable_narrator: no | <names>` becomes
