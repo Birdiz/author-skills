@@ -5,7 +5,7 @@ description: Interview the author in rounds until every branch of a character, p
 
 # grilling
 
-Version: 0.3.1 (author skills, see CHANGELOG)
+Version: 0.4.0 (author skills, see CHANGELOG)
 
 The interview primitive behind `setup-novel`, `build-character`,
 `build-world`, `brainstorm` and `check-continuity`'s arbitration. Adapted
@@ -60,7 +60,8 @@ prerequisites are settled.
    established. Show it as "déjà établi" with its chapter and line, and ask
    only about gaps and conflicts.
 2. **Ask the frontier**, three to five questions per round, numbered, in
-   the novel's language (every message to the author is in that language), through the agent's structured question tool when
+   the novel's language (every message to the author is in that language,
+   with the form of address the author uses, tu or vous), through the agent's structured question tool when
    a question is a closed choice. An open question is marked
    `→ Question ouverte`.
 3. **Write as you go.** After each round, write the settled answers into the

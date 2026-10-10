@@ -3,6 +3,23 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.4.0 (2026-10-10)
+
+Fixes from the first real `proofread` run:
+
+- **Report format.** Certainty values are `certaine` | `à confirmer`
+  (was `certain`). Typography forms ruled out by `NOVEL.md` get one row
+  per rule with its count.
+- Validation answers are `tout` (every row), `les certaines`, ids, ranges,
+  `tout sauf …`. `tout certain` is gone: an author read it as "all of
+  it", the skill as "only the certain rows". Only these forms validate; a
+  question is answered and the choice offered again. Before applying, one
+  line says what is applied and what stays open.
+- The checker's options are turned off for typography the author chose
+  against its rules (an ordinary space before `; : ! ?`), not only for
+  `ignore`.
+- Skills address the author as the author addresses them (tu or vous).
+
 ## 0.3.1 (2026-10-10)
 
 Fixes from the first real `setup-novel` run:

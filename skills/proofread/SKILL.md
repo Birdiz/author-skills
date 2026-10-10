@@ -7,7 +7,7 @@ argument-hint: "[chapitres, ex. ch3 | ch3-ch7 | tout]"
 
 # proofread
 
-Version: 0.3.1 (author skills, see CHANGELOG)
+Version: 0.4.0 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, `bible/LEXICON.md` and `.proofread/intentional.md` if
 they exist, the chapters named in the argument (ask if none). Output:
@@ -26,9 +26,10 @@ When `checker` is `grammalecte`, per chapter:
 1. Write a plain-text copy in a temporary directory with the same lines:
    strip heading `#` marks and emphasis markers (`*`, `_`), keep every line,
    so line numbers match the chapter.
-2. Run `<checker_command> -f <copy> -j`, with `-off` for the typography
-   options `NOVEL.md` sets to `ignore` (`<checker_command> -lo` lists the
-   options). Paragraph indexes in the JSON map to lines of the copy:
+2. Run `<checker_command> -f <copy> -j`, with `-off` for every typography
+   option that `NOVEL.md` sets to `ignore` or to a form the checker treats
+   as an error (an ordinary space before `; : ! ?` against its
+   non-breaking-space rule): `<checker_command> -lo` lists the options. Paragraph indexes in the JSON map to lines of the copy:
    check on the first error that the span quotes the right words.
 3. Drop spelling errors on terms and variants in the lexicon.
 
@@ -54,32 +55,46 @@ Checker : grammalecte | aucun
 
 | ID | Ligne | Extrait | Correction | Règle | Certitude |
 |---|---|---|---|---|---|
-| P3-001 | 12 | « les lettres qu'il avait écrit » | « les lettres qu'il avait écrites » | accord du participe passé avec avoir, COD avant | certain |
+| P3-001 | 12 | « les lettres qu'il avait écrit » | « les lettres qu'il avait écrites » | accord du participe passé avec avoir, COD avant | certaine |
 | P3-002 | 40 | « Elle entre dans la salle » | « Elle entra dans la salle » | temps de narration : passé simple | à confirmer |
+| P3-003 | tout le chapitre | 196 × « ' » | « ’ » | apostrophe typographique (`NOVEL.md`) | certaine |
 ```
 
 - **Extrait**: verbatim, long enough to be unique on its line.
 - **Correction**: the same extract with only the error's span changed.
-- **Certitude**: `certain` when a grammar reference marks it wrong whatever
-  the intent; `à confirmer` when it could be deliberate (tense shift, oral
-  speech, rare spelling, unusual typography).
+- **Typography**: a form `NOVEL.md` rules out everywhere (apostrophes,
+  spaces, ellipses, dashes) is one row per rule for the chapter, with its
+  count, applied to every occurrence.
+- **Certitude**: `certaine` when a grammar reference marks it wrong
+  whatever the intent; `à confirmer` when it could be deliberate (tense
+  shift, oral speech, rare spelling, unusual typography). It describes the
+  error, never the author's answer: validation does not change it.
 
-Show the author, in the novel's language, the counts per chapter and certainty, and the `à
+Show the author, in the novel's language and with the form of address
+they use (tu or vous), the counts per chapter and certainty, and the `à
 confirmer` rows in full.
 
 ## 4. Validation
 
-Apply nothing before the author validates. Accepted answers: `tout
-certain`, a list of ids (`P3-001, P3-004`), ranges (`P3-001..P3-009`),
-`tout sauf P3-007`. An answer that is none of these is a question: answer
-it and ask again. A refused row the author calls deliberate goes into
+Apply nothing before the author validates. Offer exactly these answers,
+with the number of rows each covers:
+
+- `tout`: every row, `à confirmer` included;
+- `les certaines`: only the rows marked `certaine`;
+- ids (`P3-001, P3-004`) or ranges (`P3-001..P3-009`);
+- `tout sauf P3-007`.
+
+Only these forms validate a row. A question, a remark or a wish is
+answered, then the choice is offered again with the rows still open. A refused row the author calls deliberate goes into
 `.proofread/intentional.md` (chapter id, extract, reason), which every
 later run reads: an extract listed there is not reported again.
 
 ## 5. Apply
 
-For each validated id, replace the extract with the correction on its line,
-nothing else. If the extract is no longer on that line exactly once, skip
+Before applying, say in one line which rows will be applied and which stay
+open. For each validated id, replace the extract with the correction on its
+line, nothing else; a typography row replaces every occurrence of its form
+in the chapter. If the extract is no longer on that line exactly once, skip
 it and say so. Then re-run step 1 on the changed chapters and report any
 new checker error the corrections introduced. Mark applied rows
 `appliqué` in the report.
