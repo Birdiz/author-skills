@@ -7,7 +7,7 @@ argument-hint: "[chapitres, ex. ch3 | ch3-ch7 | tout]"
 
 # proofread
 
-Version: 0.3.0 (author skills, see CHANGELOG)
+Version: 0.3.1 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, `bible/LEXICON.md` and `.proofread/intentional.md` if
 they exist, the chapters named in the argument (ask if none). Output:
@@ -64,7 +64,7 @@ Checker : grammalecte | aucun
   the intent; `à confirmer` when it could be deliberate (tense shift, oral
   speech, rare spelling, unusual typography).
 
-Show the author the counts per chapter and certainty, and the `à
+Show the author, in the novel's language, the counts per chapter and certainty, and the `à
 confirmer` rows in full.
 
 ## 4. Validation

@@ -9,7 +9,9 @@ contradiction nobody will find.
 - **Every fact carries its line and a short verbatim quote.**
 - **Record the source**: `narration`, `dialogue: <who>`, `pensée: <who>`,
   `lettre: <who>`... A character's statement is recorded as their
-  statement, never as a fact of the world.
+  statement, never as a fact of the world. Free indirect style (the
+  narration voicing a character's thought without a verb of thinking) is
+  `pensée: <who>` when the context marks it as theirs.
 - **Facts, not judgements.** No interpretation, no comparison with other
   chapters or the bible.
 - **Names in canonical form** from the lexicon, with the form used in the

@@ -6,9 +6,10 @@ disable-model-invocation: true
 
 # setup-novel
 
-Version: 0.3.0 (author skills, see CHANGELOG)
+Version: 0.3.1 (author skills, see CHANGELOG)
 
-Write `NOVEL.md` at the root of the novel project. Every other skill refuses
+Write `NOVEL.md` at the root of the novel project. Talk to the author in
+the language they write to you in, and once detected, the novel's. Every other skill refuses
 to run without it. Run again to update it: read the existing file and ask
 only about what changed or is missing.
 
@@ -25,8 +26,9 @@ only about what changed or is missing.
    `; : ! ?`, `’` against `'`, `…` against `...`, `«` against `“`, `—`
    against `–` at the start of a line.
 3. **Detect the proofreading tool** (French only): look for Grammalecte's
-   command line (`grammalecte-cli.py` on PATH, or under a path the author
-   gives). Run it with `-h` and confirm it lists `-f`, `-j` (JSON) and
+   command line (`grammalecte-cli.py`) on PATH, then in the novel project
+   (`find . -name grammalecte-cli.py`, a `tools/` directory is common) and
+   under the home directory, before asking the author. Run it with `-h` and confirm it lists `-f`, `-j` (JSON) and
    `-on`/`-off`, `-lo`; when the installed version names them differently,
    record the equivalents in `NOVEL.md` next to the command. If absent,
    give the install steps: download the Python package from https://grammalecte.net

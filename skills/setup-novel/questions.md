@@ -67,9 +67,15 @@ First « La narration fait-elle foi ? », then only if the answer is no,
     of part one, is a fabrication meant to have Nick accused;
   - Gene Wolfe, *L'Ombre du bourreau* (1980): Severian claims to forget
     nothing, yet his account leaves out and bends what suits him.
-- Manuscript example: only a narration sentence (not a thought, not
-  dialogue) that the text contradicts later. Early in a novel there is
-  usually none: say so.
+- Borderline: free indirect style (style indirect libre), the narration
+  taking on a character's thought without « pensa-t-il »: « Trop tard,
+  encore une fois. Pourquoi revenait-il toujours ici ? » Fact extraction records it as that
+  character's thought when the context marks it (a mirror, an exclamation,
+  a question to oneself), so it never needs this setting.
+- Manuscript example: a real narration sentence, quoted, with an imagined
+  later contradiction (« Imagine qu'un ch6 écrive… ») to show what the
+  setting changes. Never present an existing passage as a contradiction:
+  that is `check-continuity`'s job, with verification.
 - Changes: `check-continuity` treats a contradiction in these narrators'
   narration as possibly deliberate and asks the author instead of
   confirming it.

@@ -7,7 +7,7 @@ argument-hint: "[characters|situations|world ...] [chapitres]"
 
 # check-continuity
 
-Version: 0.3.0 (author skills, see CHANGELOG)
+Version: 0.3.1 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, the manuscript, the bible. Output: `.continuity/facts/`,
 `.continuity/findings/<axis>.md` per `continuity-findings`, and what the
@@ -56,7 +56,8 @@ Per finding, try to show it is not a contradiction:
 1. **Re-read** each location with its surrounding paragraphs. A misread
    quote refutes the finding.
 2. **Who says it**: a lie, a rumour, a belief, a dream, a character's
-   error, a narrator listed in `misleading_narration`. A statement that is
+   error, free indirect style voicing a character, a narrator listed in
+   `misleading_narration`. A statement that is
    only a character's word does not contradict a fact; it may still be a
    `knowledge` finding.
 3. **What happens in between**: time passing, healing, magic, a disguise,

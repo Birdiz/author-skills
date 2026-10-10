@@ -3,6 +3,21 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.3.1 (2026-10-10)
+
+Fixes from the first real `setup-novel` run:
+
+- `grilling`: a manuscript example is quoted after re-reading its
+  surroundings, up to the end of the reply it cites; examples illustrate a
+  setting with an imagined change and never present an existing passage as
+  a contradiction (an example claimed one that a reply two words later
+  resolved).
+- Free indirect style is recorded as the character's thought in fact
+  extracts and considered at verification; `questions.md` explains it.
+- `setup-novel` searches the project and home directory for Grammalecte
+  before giving install steps.
+- Every message to the author is in the novel's language.
+
 ## 0.3.0 (2026-10-10)
 
 `grilling` defines every notion it asks about (definition, what it is not,

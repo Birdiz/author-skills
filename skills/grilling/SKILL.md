@@ -5,7 +5,7 @@ description: Interview the author in rounds until every branch of a character, p
 
 # grilling
 
-Version: 0.3.0 (author skills, see CHANGELOG)
+Version: 0.3.1 (author skills, see CHANGELOG)
 
 The interview primitive behind `setup-novel`, `build-character`,
 `build-world`, `brainstorm` and `check-continuity`'s arbitration. Adapted
@@ -35,10 +35,16 @@ mean yes, and the author answers the opposite of what they mean.
   one example, and what the answer changes. The calling skill's reference
   is the source when it has one.
 - **Examples are claims.** An example from the manuscript is quoted with
-  chapter and line, and checked against the definition before it is shown:
-  a thought reported as a thought, or a lie in dialogue, is not narration.
-  An example from a published work comes only from the calling skill's
-  reference. With neither, say there is no example in the text yet.
+  chapter and line, after re-reading the paragraphs around it: the quote
+  holds the whole exchange, up to the end of the reply it cites. It is
+  checked against the definition before it is shown: a thought reported as
+  a thought, or a lie in dialogue, is not narration.
+- **Illustrate, do not diagnose.** To show what a setting changes, pair a
+  real quote with an explicitly imagined change (« Imagine qu'un ch6
+  écrive… »). A statement that the text already contradicts itself is a
+  finding: it belongs to `check-continuity`, with its verification.
+- **Published works** come only from the calling skill's reference. With
+  neither source, say there is no example in the text yet.
 - **A question back comes first.** When the author answers with a question
   (what it means, an example, a consequence), answer it fully, then ask
   again with the answer folded in.
@@ -54,7 +60,7 @@ prerequisites are settled.
    established. Show it as "déjà établi" with its chapter and line, and ask
    only about gaps and conflicts.
 2. **Ask the frontier**, three to five questions per round, numbered, in
-   the novel's language, through the agent's structured question tool when
+   the novel's language (every message to the author is in that language), through the agent's structured question tool when
    a question is a closed choice. An open question is marked
    `→ Question ouverte`.
 3. **Write as you go.** After each round, write the settled answers into the
