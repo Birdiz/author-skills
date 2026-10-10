@@ -5,7 +5,7 @@ description: Interview the author in rounds until every branch of a character, p
 
 # grilling
 
-Version: 0.1.0 (author skills, see CHANGELOG)
+Version: 0.2.0 (author skills, see CHANGELOG)
 
 The interview primitive behind `setup-novel`, `build-character`,
 `build-world`, `brainstorm` and `check-continuity`'s arbitration. Adapted
@@ -22,6 +22,10 @@ The calling skill names the mode:
   ones for that question only, then return to ask mode.
 - **suggest**: for framing and setup decisions. Give each question a
   recommended answer, worded so that "oui" accepts it.
+
+Word every question in the positive: « La narration fait-elle foi ? »,
+not « Le narrateur est-il non fiable ? ». A negated question makes "non"
+mean yes, and the author answers the opposite of what they mean.
 
 ## Rounds
 

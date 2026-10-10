@@ -20,7 +20,7 @@ sub_agents: yes
 narrative_tense: passé simple et imparfait
 person: 3rd
 pov: multiple, one per chapter
-unreliable_narrator: no
+misleading_narration: []
 dialogue_marking: tiret cadratin en début de ligne
 
 ## Proofreading
@@ -47,7 +47,11 @@ path: bible/
   uncertain; `strict` checks dialogue like narration.
 - `typography`: each key may be `ignore`, in which case `proofread` does
   not check it.
-- `unreliable_narrator`: `no`, or the characters whose narration may be
-  false; `check-continuity` verification reads it.
+- `misleading_narration`: the narrators whose narration may mislead the
+  reader (point-of-view characters, or `narrateur` for an external
+  narrator); `[]` when the narration is always true in the story.
+  `check-continuity` verification reads it. Asked as « La narration
+  fait-elle foi ? », then, if not, « Quels narrateurs peuvent tromper le
+  lecteur ? ».
 - `sub_agents`: whether the agent can dispatch sub-agents; skills take the
   sequential path when `no`.

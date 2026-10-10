@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # setup-novel
 
-Version: 0.1.0 (author skills, see CHANGELOG)
+Version: 0.2.0 (author skills, see CHANGELOG)
 
 Write `NOVEL.md` at the root of the novel project. Every other skill refuses
 to run without it. Run again to update it: read the existing file and ask

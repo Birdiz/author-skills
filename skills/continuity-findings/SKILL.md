@@ -5,7 +5,7 @@ description: Schema and rules for continuity findings in a novel (contradictions
 
 # continuity-findings
 
-Version: 0.1.0 (author skills, see CHANGELOG)
+Version: 0.2.0 (author skills, see CHANGELOG)
 
 One file per axis, `.continuity/findings/<axis>.md`, kept across runs: a
 finding is never deleted or renumbered, its fields change.
