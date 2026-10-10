@@ -19,7 +19,9 @@ skills with their reason:
    `build-world` ask rather than invent.
 2. **The manuscript changes only by validated correction.** The agent
    proposes the exact replacement, the author validates it by id, and only
-   the error's span is replaced: no rewording, no reordering.
+   the error's span is replaced: no rewording, no reordering. Adding or
+   removing a scene-break marker, or splitting a paragraph, is a correction
+   too. `validated-corrections` holds the protocol.
 3. **Proofreading never touches style.** Repetition, word choice, rhythm and
    continuity are out of scope; a deliberate deviation (oral speech, a
    tense shift) is reported as uncertain, never as certain.

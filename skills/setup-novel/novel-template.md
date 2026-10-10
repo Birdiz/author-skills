@@ -13,6 +13,7 @@ language: fr
 chapters: manuscript/*.md
 chapter_id: leading number of the file name → ch<N>
 order: file name
+scene_break: "* * *"
 sub_agents: yes
 
 ## Narration
@@ -52,5 +53,7 @@ path: bible/
   narrator); `[]` when the narration is always true in the story.
   `check-continuity` verification reads it. See
   [questions](questions.md) for how it is asked.
+- `scene_break`: the line that marks a scene break; `scene-breaks`,
+  `proofread` and `check-continuity` read it.
 - `sub_agents`: whether the agent can dispatch sub-agents; skills take the
   sequential path when `no`.

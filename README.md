@@ -45,7 +45,8 @@ The skills work in the novel's own repository, never in this one:
 │   ├── timeline.md
 │   └── rulings.md
 ├── .continuity/             # check-continuity: facts cache, findings
-├── .proofread/              # proofread: reports, deliberate deviations
+├── .proofread/              # proofread: reports, deliberate forms
+├── .scenes/                 # scene-breaks: reports, deliberate breaks
 └── notes/                   # brainstorm briefs, muse sparks
 ```
 
@@ -55,7 +56,8 @@ The skills work in the novel's own repository, never in this one:
    typography, Grammalecte.
 2. `/build-character` and `/build-world` as the story needs them.
 3. Write.
-4. `/proofread <chapitres>`: report, then validated corrections.
+4. `/scene-breaks <chapitres>` and `/proofread <chapitres>`: reports, then
+   validated corrections.
 5. `/check-continuity [axes] [chapitres]`: extract, compare, verify,
    arbitrate.
 6. When stuck: `/brainstorm <idée>` if an idea will not take shape,
@@ -70,6 +72,8 @@ The skills work in the novel's own repository, never in this one:
 - [proofread](skills/proofread/SKILL.md): strict proofreading (spelling,
   grammar, conjugation, tenses, punctuation, typography), Grammalecte then
   a full reading; applies only validated corrections.
+- [scene-breaks](skills/scene-breaks/SKILL.md): check where chapters break
+  into scenes, remove markers that cut a scene, add missing ones.
 - [build-character](skills/build-character/SKILL.md): a core interview,
   then physique, psychology, savoir, savoir-faire, savoir-être, voice,
   relations, arc.
@@ -92,6 +96,9 @@ The skills work in the novel's own repository, never in this one:
   suggest mode.
 - [continuity-findings](skills/continuity-findings/SKILL.md): the format of
   a contradiction.
+- [validated-corrections](skills/validated-corrections/SKILL.md): how a
+  change to the manuscript is proposed, validated by the author and
+  applied.
 
 A user-invoked skill may rely on model-invoked ones, never on another
 user-invoked one.

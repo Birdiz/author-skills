@@ -7,7 +7,7 @@ argument-hint: "[characters|situations|world ...] [chapitres]"
 
 # check-continuity
 
-Version: 0.4.0 (author skills, see CHANGELOG)
+Version: 0.5.0 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, the manuscript, the bible. Output: `.continuity/facts/`,
 `.continuity/findings/<axis>.md` per `continuity-findings`, and what the
@@ -78,9 +78,8 @@ through `grilling` in **suggest** mode: each with both quotes and the
 Apply exactly the author's choice, and set `resolution`:
 
 - **bible-updated**: edit the sheet per `story-bible`.
-- **text-corrected**: show the exact replacement (only the conflicting
-  words), apply it after the author validates it, nothing else in the
-  sentence.
+- **text-corrected**: propose the exact replacement (only the conflicting
+  words) and apply it per `validated-corrections`, with ids `T<N>-<NNN>`.
 - **ruled**: append a ruling to `bible/rulings.md` with its scope.
 - **deferred**: leave it; the next run presents it again.
 

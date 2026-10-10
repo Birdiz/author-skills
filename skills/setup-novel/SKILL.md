@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # setup-novel
 
-Version: 0.4.0 (author skills, see CHANGELOG)
+Version: 0.5.0 (author skills, see CHANGELOG)
 
 Write `NOVEL.md` at the root of the novel project. Talk to the author in
 the language they write to you in, and once detected, the novel's. Every other skill refuses
@@ -24,7 +24,8 @@ only about what changed or is missing.
    Infer the language, narrative tense, person, point of view, how dialogue
    is marked, and the typography in use: count `U+202F` and `U+00A0` before
    `; : ! ?`, `’` against `'`, `…` against `...`, `«` against `“`, `—`
-   against `–` at the start of a line.
+   against `–` at the start of a line, and the scene-break marker (a
+   short line of symbols alone between paragraphs).
 3. **Detect the proofreading tool** (French only): look for Grammalecte's
    command line (`grammalecte-cli.py`) on PATH, then in the novel project
    (`find . -name grammalecte-cli.py`, a `tools/` directory is common) and

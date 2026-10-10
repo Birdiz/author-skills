@@ -40,9 +40,12 @@ bible files, findings and reports.
   ruling).
 - **Arbitration**: the author choosing, per finding, which side of canon is
   right.
-- **Correction**: the smallest replacement of words in the manuscript that
-  fixes a validated error. The only text an agent writes into the
-  manuscript.
+- **Correction**: the smallest change to the manuscript that fixes a
+  validated error: replaced words, a split paragraph, a scene-break marker
+  added or removed. The only change an agent makes to the manuscript, per
+  `validated-corrections`.
+- **Scene break**: the marker line (`scene_break` in `NOVEL.md`) between
+  two scenes, where time, place, point of view or thread breaks.
 - **Prose**: sentences that could appear in the novel. Only the author writes
   them.
 - **Spark**: one line from `muse` that starts the author's thinking: a

@@ -16,6 +16,8 @@ contradiction nobody will find.
   chapters or the bible.
 - **Names in canonical form** from the lexicon, with the form used in the
   text when it differs.
+- **Scene breaks** (`scene_break` in `NOVEL.md`): each marker with what
+  changes across it, as the text states it.
 - Exhaustive within the sections below; nothing outside them.
 
 ## Format
@@ -28,6 +30,9 @@ hash: <git hash-object>
 extracted: 2026-10-09
 pov: Mira
 ---
+
+## Scènes
+- l.39 « * * * » → lieu : forêt → Vieux-Gué ; temps : même soir
 
 ## Temps
 - l.1 narration « Trois jours après l'incendie » → début : incendie + 3 jours

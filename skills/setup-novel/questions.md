@@ -80,6 +80,17 @@ First « La narration fait-elle foi ? », then only if the answer is no,
   narration as possibly deliberate and asks the author instead of
   confirming it.
 
+## scene_break
+
+« Les changements de scène sont-ils marqués par une ligne « <marqueur
+détecté> » ? »
+
+- Definition: the line alone between two paragraphs that marks a jump in
+  time, place or point of view: `* * *`, `***`, `⁂`.
+- Not: a blank line used as a pause inside a scene.
+- Changes: `check-continuity` reads each marker as a possible jump in time
+  or place; `scene-breaks` checks where they fall.
+
 ## dialogue_marking
 
 « Les dialogues sont-ils marqués par <marque détectée> ? »

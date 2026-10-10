@@ -3,6 +3,23 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.5.0 (2026-10-11)
+
+- **New `NOVEL.md` field** `scene_break` (default `"* * *"`). Add it to
+  an existing `NOVEL.md`, or run `/setup-novel` again.
+- **New skill `scene-breaks`**: keeps, removes or adds scene-break markers,
+  each change validated by the author. Report `.scenes/<chapter-id>.md`.
+- **New skill `validated-corrections`**: the one protocol for changing the
+  manuscript (rows, certainty, validating answers, applying, deliberate
+  forms), used by `proofread`, `scene-breaks` and `check-continuity`.
+- **`proofread` reads more thoroughly**: typography by a deterministic
+  script (`scripts/typography.py`), then batches of about fifteen
+  paragraphs read twice, once for language (A) and once for punctuation
+  and dialogue (B), with coverage checked. Scope now names detached
+  participles, *si* + conditional, missing words, vocative commas and
+  narration glued to a reply. **Report format**: new `Source` column.
+- Fact extracts record scene breaks and what changes across them.
+
 ## 0.4.0 (2026-10-10)
 
 Fixes from the first real `proofread` run:
