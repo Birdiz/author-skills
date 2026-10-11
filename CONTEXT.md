@@ -44,6 +44,9 @@ bible files, findings and reports.
   validated error: replaced words, a split paragraph, a scene-break marker
   added or removed. The only change an agent makes to the manuscript, per
   `validated-corrections`.
+- **Out-of-scope note**: something a skill noticed outside what it owns,
+  listed in its report for the owning skill, never proposed as a
+  correction.
 - **Scene break**: the marker line (`scene_break` in `NOVEL.md`) between
   two scenes, where time, place, point of view or thread breaks.
 - **Prose**: sentences that could appear in the novel. Only the author writes

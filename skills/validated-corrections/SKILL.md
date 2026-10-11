@@ -5,12 +5,22 @@ description: Protocol for changing a novel's manuscript only with the author's v
 
 # validated-corrections
 
-Version: 0.6.0 (author skills, see CHANGELOG)
+Version: 0.6.1 (author skills, see CHANGELOG)
 
 The manuscript changes only by correction the author validated by id. The
 calling skill names its report file, its id prefix and what a correction
 does (replace words, insert or remove a scene break); this skill holds
 the rest.
+
+## Scope
+
+A skill proposes rows only for what it owns: `proofread` the language,
+`scene-breaks` the markers, `check-continuity` the canon. Anything else
+noticed on the way goes into a `## Hors périmètre` section of the report,
+one line each (line, quote, what was noticed, the skill that owns it),
+with no correction and no row: the owning skill has the checks this one
+skipped (for continuity, the extraction, the independent verification and
+the choice between text, sheet and ruling).
 
 ## Rows
 

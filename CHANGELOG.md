@@ -3,6 +3,13 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.6.1 (2026-10-11)
+
+`validated-corrections`: a skill proposes corrections only within its own
+scope. `scene-breaks` proposed two continuity fixes without extraction,
+verification or arbitration; out-of-scope observations now go into a
+`## Hors périmètre` section of the report, for the owning skill.
+
 ## 0.6.0 (2026-10-11)
 
 From the second proofreading run:
