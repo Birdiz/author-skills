@@ -44,6 +44,10 @@ bible files, findings and reports.
   validated error: replaced words, a split paragraph, a scene-break marker
   added or removed. The only change an agent makes to the manuscript, per
   `validated-corrections`.
+- **Echo**: one word family repeated close enough for a reader to feel it,
+  found by `echoes`. A **concentration** is the same over a passage.
+- **Tic**: a word or gesture the author reaches for across a chapter or the
+  novel (regarder, s'arrêter, faire).
 - **Out-of-scope note**: something a skill noticed outside what it owns,
   listed in its report for the owning skill, never proposed as a
   correction.

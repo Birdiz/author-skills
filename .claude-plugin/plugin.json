@@ -1,6 +1,6 @@
 {
   "name": "author-skills",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Agent skills for writing a novel: strict proofreading, character and world building, continuity checks against a story bible, brainstorming, and a muse that never writes for you.",
   "author": {
     "name": "Thomas Bouzy",
@@ -25,6 +25,7 @@
     "./skills/validated-corrections",
     "./skills/proofread",
     "./skills/scene-breaks",
+    "./skills/echoes",
     "./skills/build-character",
     "./skills/build-world",
     "./skills/check-continuity",

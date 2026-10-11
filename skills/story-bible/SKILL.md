@@ -5,7 +5,7 @@ description: Format and rules of a novel's bible (character, place and system sh
 
 # story-bible
 
-Version: 0.6.1 (author skills, see CHANGELOG)
+Version: 0.7.0 (author skills, see CHANGELOG)
 
 The bible is the canon outside the text. Its path is `bible.path` in
 `NOVEL.md` (default `bible/`).

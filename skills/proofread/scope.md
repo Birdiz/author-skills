@@ -54,7 +54,8 @@ dialogue in both cases.
 Leave these unreported, even when tempting: they belong to the author or to
 other skills.
 
-- Style: repetition, word choice, sentence length, rhythm, clichés.
+- Style: repetition, word choice, sentence length, rhythm, clichés;
+  repetitions and tics belong to `echoes`.
 - Register, unless it is a plain error.
 - Continuity of facts, names against sheets, forms of address, timeline:
   `check-continuity`.

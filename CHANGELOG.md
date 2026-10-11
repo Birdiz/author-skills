@@ -3,6 +3,18 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.7.0 (2026-10-11)
+
+- **New skill `echoes`**: a counting script (`scripts/echoes.py`) finds
+  echoes (one word family within about 50 words), concentrations (four
+  times or more within about 400 words), gesture verbs, weak verbs, -ment
+  adverbs and tics across chapters; the agent drops merged words, senses,
+  precise terms and deliberate effects, asks about motifs, then offers
+  word alternatives per occurrence and prompts for images. Report
+  `.echoes/<chapter-id>.md`, motifs kept in `.echoes/intentional.md`.
+- `validated-corrections`: a row may offer alternatives; the author
+  validates it by naming one or giving their own word.
+
 ## 0.6.1 (2026-10-11)
 
 `validated-corrections`: a skill proposes corrections only within its own

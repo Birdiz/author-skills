@@ -47,6 +47,7 @@ The skills work in the novel's own repository, never in this one:
 ├── .continuity/             # check-continuity: facts cache, findings
 ├── .proofread/              # proofread: reports, deliberate forms
 ├── .scenes/                 # scene-breaks: reports, deliberate breaks
+├── .echoes/                 # echoes: reports, deliberate motifs
 └── notes/                   # brainstorm briefs, muse sparks
 ```
 
@@ -74,6 +75,9 @@ The skills work in the novel's own repository, never in this one:
   a full reading; applies only validated corrections.
 - [scene-breaks](skills/scene-breaks/SKILL.md): check where chapters break
   into scenes, remove markers that cut a scene, add missing ones.
+- [echoes](skills/echoes/SKILL.md): repetitions, concentrations and tics
+  (gestures, weak verbs, adverbs, across chapters), with word alternatives
+  to choose from and prompts for images.
 - [build-character](skills/build-character/SKILL.md): a core interview,
   then physique, psychology, savoir, savoir-faire, savoir-être, voice,
   relations, arc.

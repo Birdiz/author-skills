@@ -16,7 +16,8 @@ skills with their reason:
 
 1. **The agent never writes prose.** The voice is the author's. `muse` gives
    sparks, `brainstorm` gives beats and briefs, `build-character` and
-   `build-world` ask rather than invent.
+   `build-world` ask rather than invent, `echoes` offers words to choose
+   from and prompts for images, never a rewritten sentence or an image.
 2. **The manuscript changes only by validated correction.** The agent
    proposes the exact replacement, the author validates it by id, and only
    the error's span is replaced: no rewording, no reordering. Adding or

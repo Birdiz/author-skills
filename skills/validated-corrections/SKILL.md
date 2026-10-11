@@ -5,7 +5,7 @@ description: Protocol for changing a novel's manuscript only with the author's v
 
 # validated-corrections
 
-Version: 0.6.1 (author skills, see CHANGELOG)
+Version: 0.7.0 (author skills, see CHANGELOG)
 
 The manuscript changes only by correction the author validated by id. The
 calling skill names its report file, its id prefix and what a correction
@@ -15,7 +15,8 @@ the rest.
 ## Scope
 
 A skill proposes rows only for what it owns: `proofread` the language,
-`scene-breaks` the markers, `check-continuity` the canon. Anything else
+`scene-breaks` the markers, `echoes` repetitions and tics,
+`check-continuity` the canon. Anything else
 noticed on the way goes into a `## Hors périmètre` section of the report,
 one line each (line, quote, what was noticed, the skill that owns it),
 with no correction and no row: the owning skill has the checks this one
@@ -37,6 +38,10 @@ certainty.
   change, never the author's answer.
 - A change applied to the whole chapter (a typographic form) is one row
   with its count.
+- A row may offer alternatives, separated by `|`, when the calling skill
+  allows it. The author validates it by naming one, by number or text, or
+  by giving their own word (`E4-001 : 2`, `E4-001 : la veilleuse`); `tout`
+  and `les certaines` leave it open.
 
 ## Presenting
 
