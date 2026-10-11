@@ -6,9 +6,11 @@ reports) are a public interface: a change to one is listed here.
 ## 0.6.1 (2026-10-11)
 
 `validated-corrections`: a skill proposes corrections only within its own
-scope. `scene-breaks` proposed two continuity fixes without extraction,
-verification or arbitration; out-of-scope observations now go into a
-`## Hors périmètre` section of the report, for the owning skill.
+scope; what it notices outside goes into a `## Hors périmètre` section of
+its report, for the owning skill. This writes down what `scene-breaks`
+already did in its first run (two points flagged for verification by
+`check-continuity`, no correction), and keeps those notes in the report
+rather than only in the conversation.
 
 ## 0.6.0 (2026-10-11)
 
