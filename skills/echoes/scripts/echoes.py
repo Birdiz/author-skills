@@ -24,6 +24,8 @@ quand quel quelle quelles quels quelque quelques sans sera seulement sinon
 sont sous tandis tant toujours tout toute toutes tous très trop vers votre
 vous voilà ainsi assez aucun aucune avoir déjà ensuite enfin presque puis
 rien cette celui-ci celle-ci là-bas peut-être
+quoi ceux chez voici pourtant puisque parfois souvent
+jusqu quelqu lorsqu puisqu quoiqu presqu aujourd
 deux trois quatre cinq sept huit neuf vingt trente quarante cent mille
 premier première second seconde dernier dernière
 contre devant derrière près loin autour dessus dessous parmi selon
@@ -32,10 +34,14 @@ contre devant derrière près loin autour dessus dessous parmi selon
 # Verbs that punctuate action between replies.
 GESTURES = {
     "regard", "arrêt", "pos", "hoch", "tourn", "retourn", "lev", "baiss",
-    "souri", "soupir", "haus", "fronc", "pliss", "hésit", "recul", "avanc",
-    "approch", "fix", "dévisag", "tois", "tapot", "serr", "croisa", "crois",
-    "hauss", "secou", "inclin", "acquiesç", "acquiesc",
+    "souri", "soupir", "hauss", "fronc", "pliss", "hésit", "recul", "avanc",
+    "approch", "fix", "dévisag", "tois", "tapot", "serr", "crois", "secou",
+    "inclin", "acquiesc",
 }
+# Stems shorter than the usual four letters, kept so their gestures count.
+SHORT_STEMS = {"pos", "lev", "fix"}
+# Irregular forms the suffixes do not bring to one stem.
+ALIASES = {"sour": "souri", "sourir": "souri"}
 WEAK_FORMS = {
     "faire": {"faire", "fait", "faits", "faite", "faites", "fais", "faisait",
               "faisaient", "fit", "firent", "ferait", "feraient", "fera"},
@@ -48,46 +54,97 @@ WEAK_FORMS = {
 }
 
 SUFFIXES = sorted("""
-èrent erent aient eraient issaient issait issant irent assent asse
-ait ais ant ante antes ants ions iez ons ent ées ée és er ez ir it is
+èrent erent aient eraient erait eront era issaient issait issant irent
+assent asse eaient eait eant ea
+ait ais ant ante antes ants ions iez ons ent ées ée és é er ez ir it is
 a e s x
 """.split(), key=len, reverse=True)
+
+# Subject pronouns after an inverted verb: « murmura-t-il » is « murmura ».
+INVERTED = re.compile(r"(?:-t)?-(?:il|ils|elle|elles|on|je|tu|nous|vous)$")
+KEEP_HYPHEN = {"rendez-vous"}
+
+# Nouns ending in -ment, not adverbs.
+MENT_NOUNS = set("""
+mouvement sentiment bâtiment vêtement événement évènement changement
+instrument élément argument jugement logement gouvernement appartement
+commencement enseignement comportement développement traitement testament
+firmament monument document rassemblement tremblement battement grondement
+hurlement gémissement frémissement craquement grincement claquement
+aboiement bruissement glissement roulement sifflement froissement
+chuchotement ronflement étonnement soulagement agacement emportement
+engagement enterrement campement régiment armement équipement médicament
+ornement sacrement parlement département compartiment tempérament
+ressentiment pressentiment consentement rapprochement éloignement isolement
+effondrement écroulement châtiment aliment fragment segment filament ciment
+""".split())
+DETERMINERS = set("""
+le l un du au ce cet son mon ton sa ma ta leur notre votre quel chaque
+""".split())
 
 
 def stem(word):
     if word.endswith("ment") and len(word) > 7:
         return word  # adverbs counted on their own
+    word = word.replace("ç", "c")
     for suffix in SUFFIXES:
-        if word.endswith(suffix) and len(word) - len(suffix) >= 4:
-            return word[: -len(suffix)]
-    return word
+        rest = word[: -len(suffix)]
+        if word.endswith(suffix) and (len(rest) >= 4 or rest in SHORT_STEMS):
+            return ALIASES.get(rest, rest)
+    return ALIASES.get(word, word)
 
 
-def lexicon_terms(path):
-    terms = set()
+def words(text):
+    """Lowercase words of a line, elisions split, inverted pronouns dropped."""
+    out = []
+    for w in WORD.findall(text.lower().replace("’", "'").replace("'", " ")):
+        if "-" in w and w not in KEEP_HYPHEN:
+            w = INVERTED.sub("", w)
+        out.append(w)
+    return out
+
+
+def skipped(line, scene_break):
+    """Blank lines, scene-break markers and Markdown headings carry no prose."""
+    s = line.strip()
+    return not s or s == scene_break or s.startswith("#")
+
+
+def lexicon_phrases(path):
+    """Each term, plural and variant as a sequence of words, masked where it
+    occurs as a whole: « Porte des Brumes » hides the place, not every door."""
+    phrases = set()
     if not path:
-        return terms
+        return phrases
     try:
         for line in open(path, encoding="utf-8"):
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
             if len(cells) < 5 or cells[0] in ("Terme", "") or set(cells[0]) <= {"-"}:
                 continue
-            for term in [cells[0]] + cells[4].split(","):
-                terms.update(w.lower() for w in WORD.findall(term.lower()))
+            for term in [cells[0], cells[3]] + cells[4].split(","):
+                phrase = tuple(words(re.sub(r"\([^)]*\)", "", term)))
+                if phrase:
+                    phrases.add(phrase)
     except FileNotFoundError:
         pass
-    return terms
+    return phrases
 
 
-def intentional_words(path):
-    words = set()
+def motif_stems(path):
+    """Stems of the families under `## Motifs` in `.echoes/intentional.md`,
+    one per line before « — ». `## Refusés` holds extracts: the agent reads
+    them, the counter does not."""
+    stems, section = set(), None
     if path:
         try:
             for line in open(path, encoding="utf-8"):
-                words.update(WORD.findall(line.lower().split("—")[0]))
+                if line.startswith("## "):
+                    section = line[3:].strip().lower()
+                elif section == "motifs" and line.lstrip().startswith("-"):
+                    stems.update(stem(w) for w in words(line.lstrip()[1:].split("—")[0]))
         except FileNotFoundError:
             pass
-    return words
+    return stems
 
 
 def proper_nouns(paths, scene_break):
@@ -95,7 +152,7 @@ def proper_nouns(paths, scene_break):
     caps, total = defaultdict(int), defaultdict(int)
     for path in paths:
         for line in open(path, encoding="utf-8"):
-            if line.strip() == scene_break:
+            if skipped(line, scene_break):
                 continue
             for m in re.finditer(r"(?<=[\w,;:] )([A-Za-zÀ-ÿœæ]+)", line.replace("’", "'")):
                 w = m.group(1)
@@ -107,23 +164,46 @@ def proper_nouns(paths, scene_break):
 def tokens(path, scene_break):
     out = []
     for n, line in enumerate(open(path, encoding="utf-8").read().split("\n"), 1):
-        if not line.strip() or line.strip() == scene_break:
+        if skipped(line, scene_break):
             continue
         dialogue = line.lstrip()[:1] in "—–-"
-        text = line.lower().replace("’", "'")
-        for w in WORD.findall(text.replace("'", " ")):
+        for w in words(line):
             out.append((w, n, dialogue))
     return out
 
 
+def masked(toks, phrases):
+    """Indexes of tokens inside an occurrence of a lexicon phrase."""
+    by_first = defaultdict(list)
+    for p in phrases:
+        by_first[p[0]].append(p)
+    hidden = set()
+    for i, (w, _, _) in enumerate(toks):
+        for p in by_first.get(w, ()):
+            if tuple(t[0] for t in toks[i:i + len(p)]) == p:
+                hidden.update(range(i, i + len(p)))
+    return hidden
+
+
+def is_adverb(toks, i):
+    w = toks[i][0]
+    if not w.endswith("ment") or len(w) <= 7 or w in MENT_NOUNS:
+        return False
+    return i == 0 or toks[i - 1][0] not in DETERMINERS
+
+
 def analyse(path, a, excluded):
     toks = tokens(path, a.scene_break)
-    words = len(toks)
+    n_words = len(toks)
+    hidden = masked(toks, excluded["phrases"])
     by_family = defaultdict(list)
     for i, (w, n, dialogue) in enumerate(toks):
-        if len(w) < 4 or w in STOP or w in excluded:
+        if len(w) < 4 or w in STOP or w in excluded["names"] or i in hidden:
             continue
-        by_family[stem(w)].append((i, w, n, dialogue))
+        family = stem(w)
+        if family in excluded["motifs"]:
+            continue
+        by_family[family].append((i, w, n, dialogue))
 
     echoes = []
     for fam, occ in by_family.items():
@@ -158,7 +238,7 @@ def analyse(path, a, excluded):
                           "span_words": best[-1][0] - best[0][0]})
     zones.sort(key=lambda z: (-z["count"], z["span_words"]))
 
-    per_k = lambda c: round(1000 * c / max(words, 1), 1)
+    per_k = lambda c: round(1000 * c / max(n_words, 1), 1)
     overuse = sorted(
         ({"family": f, "count": len(o), "per_1000": per_k(len(o)),
           "forms": sorted({x[1] for x in o}), "lines": sorted({x[2] for x in o})}
@@ -172,15 +252,16 @@ def analyse(path, a, excluded):
         if hits:
             weak.append({"verb": verb, "count": len(hits), "per_1000": per_k(len(hits)),
                          "lines": sorted({n for _, n in hits})})
-    adverbs = [(i, w, n) for i, (w, n, _) in enumerate(toks) if w.endswith("ment") and len(w) > 7
-               and w not in excluded]
+    adverbs = [(i, w, n) for i, (w, n, _) in enumerate(toks)
+               if is_adverb(toks, i) and i not in hidden
+               and w not in excluded["names"] and w not in excluded["motifs"]]
     clusters = []
     for x, y in zip(adverbs, adverbs[1:]):
         if y[0] - x[0] <= a.window // 2:
             clusters.append({"words": [x[1], y[1]], "lines": [x[2], y[2]]})
 
     return {
-        "file": path, "words": words, "echoes": echoes[: a.top],
+        "file": path, "words": n_words, "echoes": echoes[: a.top],
         "concentrations": zones[: a.top],
         "overuse": overuse[: a.top], "gestures": gestures, "weak_verbs": weak,
         "ment_adverbs": {"count": len(adverbs), "per_1000": per_k(len(adverbs)),
@@ -201,8 +282,9 @@ def main():
     p.add_argument("--top", type=int, default=25)
     a = p.parse_args()
 
-    excluded = (lexicon_terms(a.lexicon) | intentional_words(a.intentional)
-                | proper_nouns(a.chapters, a.scene_break))
+    excluded = {"phrases": lexicon_phrases(a.lexicon),
+                "motifs": motif_stems(a.intentional),
+                "names": proper_nouns(a.chapters, a.scene_break)}
     chapters, densities = [], []
     for path in a.chapters:
         report, density = analyse(path, a, excluded)

@@ -117,6 +117,11 @@ user-invoked one.
   (no prose, validated corrections only, no style in proofreading, quotes
   in every finding).
 
+## Tests
+
+The scripts' tests run with the standard library:
+`python3 -m unittest discover tests`.
+
 ## Language
 
 Skills are written in English. Templates, questions and everything the

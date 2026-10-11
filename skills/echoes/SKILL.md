@@ -7,7 +7,7 @@ argument-hint: "[chapitres, ex. ch2 | ch1-ch3 | tout]"
 
 # echoes
 
-Version: 0.7.0 (author skills, see CHANGELOG)
+Version: 0.7.1 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, `bible/LEXICON.md` and `.echoes/intentional.md` if they
 exist, the chapters named in the argument (ask if none). Output:
@@ -41,6 +41,30 @@ The path is relative to this skill's directory. It returns, per chapter:
 
 Families come from a light stemmer and can merge different words
 (« porte », « porta »): the script finds candidates, it does not decide.
+Lexicon terms are hidden only where they occur whole (« Porte des Brumes »
+hides the place, not « la porte »); motifs are hidden by family.
+
+## Deliberate echoes
+
+`.echoes/intentional.md` has two sections, and the script reads only the
+first:
+
+```markdown
+# Échos voulus
+
+## Motifs
+- brume — le brouillard du port, voulu
+
+## Refusés
+- ch4, l. 88 : « la lanterne éclairait à peine la lanterne voisine » — répétition voulue
+```
+
+- **Motifs**: one family per line, the word before « — », the reason
+  after. The family is never counted again, in any chapter.
+- **Refusés**: a row the author refused as deliberate, per
+  `validated-corrections` (chapter id, line, extract, reason). The script
+  still counts the word elsewhere; drop the candidate only where its extract
+  is listed.
 
 ## 2. Judge
 
@@ -52,9 +76,10 @@ feel the repetition. Drop it, with its reason in the report, when it is:
 - the precise term with no equal (a technical word, a recurring object);
 - a deliberate effect: anaphora, a refrain, a character's verbal tic in
   dialogue;
+- an extract listed under `## Refusés`;
 - a candidate motif: ask the author once (« “brume” revient 14 fois :
-  motif voulu ? »); a yes goes into `.echoes/intentional.md` and the
-  family is never reported again.
+  motif voulu ? »); a yes goes under `## Motifs` and the family is never
+  reported again.
 
 For each kept echo, choose which occurrences to vary: usually not the
 first, never the one where the word is the only right one.
@@ -71,7 +96,7 @@ Write `.echoes/<chapter-id>.md`, replacing the previous report:
 
 | ID | Ligne | Extrait | Correction | Raison | Certitude |
 |---|---|---|---|---|---|
-| E4-001 | 88 | « la lanterne éclairait à peine la lanterne voisine » | « la lanterne éclairait à peine la lampe voisine » \| « …le fanal voisin » \| « …sa voisine » | écho : « lanterne » deux fois sur la ligne, 5 fois en 30 lignes | à confirmer |
+| E4-001 | 88 | « la lanterne éclairait à peine la lanterne voisine » | 1. « la lanterne éclairait à peine la lampe voisine » \| 2. « la lanterne éclairait à peine le fanal voisin » \| 3. « la lanterne éclairait à peine sa voisine » | écho : « lanterne » deux fois sur la ligne, 5 fois en 30 lignes | à confirmer |
 
 ## Tics
 
@@ -89,13 +114,18 @@ Write `.echoes/<chapter-id>.md`, replacing the previous report:
 
 ## Écartés
 - « port » (l. 40–52) : « porte » et « porta », deux mots fusionnés par le compteur.
+
+## Hors périmètre
+- l. 61 : « ils se sont assis » — temps composé dans un récit au passé simple, pour `proofread`.
 ```
 
 - **Remplacements**: one row per occurrence to vary. **Correction** lists
-  three to five alternatives separated by `|`, each the same extract with
-  one word or short phrase changed, or the word removed when the sentence
-  stands without it. Alternatives fit the sense, the register and the
-  world (the lexicon, the period).
+  three to five numbered alternatives separated by `|`, each the whole
+  extract with one word or short phrase changed (and the agreements that
+  change requires), or the word removed when the sentence stands without
+  it. Never abbreviate an alternative: it is applied as written.
+  Alternatives fit the sense, the register and the world (the lexicon, the
+  period).
 - **Tics** (gestures, weak verbs, adverbs): no row, since varying a gesture
   means rewriting a beat. Each tic gets one prompt for the author, aimed
   at the passage where it is densest.
@@ -106,9 +136,9 @@ Write `.echoes/<chapter-id>.md`, replacing the previous report:
 ## 4. Validate and apply
 
 Per `validated-corrections`, with ids `E<N>-<NNN>` and
-`.echoes/intentional.md`. A row with alternatives is validated by naming
-one (`E4-001 : 2`, or its text) or by giving the author's own word
-(`E4-001 : la veilleuse`); `tout` and `les certaines` do not apply to it.
+`.echoes/intentional.md` (`## Refusés`). Every row has alternatives, so
+the author answers each one by number or by their own word (`E4-001 : 2`,
+`E4-003 : la veilleuse`).
 
 ## Done
 

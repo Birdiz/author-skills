@@ -3,6 +3,27 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.7.1 (2026-10-11)
+
+From the first review of `echoes`, which silenced real echoes:
+
+- `.echoes/intentional.md` has two sections. `## Motifs` lists families
+  the counter never reports; `## Refusés` lists refused rows by extract,
+  which the agent drops and the counter ignores. Before, every word of
+  every line was excluded across the novel, so one refused row silenced a
+  word everywhere.
+- Lexicon terms are hidden only where they occur whole: « Porte des
+  Brumes » no longer hides every « porte ». Plurals are read, annotations
+  in parentheses are not.
+- Counter: gestures with short stems (poser, lever, fixer) and forms in
+  -ça, -gea, -é are counted; inverted verbs (« murmura-t-il ») join their
+  verb; elisions (jusqu', quelqu'), headings and nouns in -ment are no
+  longer counted. Tests in `tests/test_echoes.py`.
+- `validated-corrections`: rows with alternatives are validated only by an
+  id with a number or a word; an author's word that needs another change
+  is added as an alternative and shown before it is applied. Alternatives
+  are written in full and numbered.
+
 ## 0.7.0 (2026-10-11)
 
 - **New skill `echoes`**: a counting script (`scripts/echoes.py`) finds

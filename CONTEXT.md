@@ -48,6 +48,8 @@ bible files, findings and reports.
   found by `echoes`. A **concentration** is the same over a passage.
 - **Tic**: a word or gesture the author reaches for across a chapter or the
   novel (regarder, s'arrêter, faire).
+- **Motif**: a family the author repeats on purpose, listed under
+  `## Motifs` in `.echoes/intentional.md`, never reported as an echo.
 - **Out-of-scope note**: something a skill noticed outside what it owns,
   listed in its report for the owning skill, never proposed as a
   correction.

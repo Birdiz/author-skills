@@ -7,7 +7,7 @@ argument-hint: "[où tu en es, facultatif]"
 
 # muse
 
-Version: 0.7.0 (author skills, see CHANGELOG)
+Version: 0.7.1 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, the bible, the manuscript. Output: sparks in the
 conversation; a file only if the author asks. Refuse to run without

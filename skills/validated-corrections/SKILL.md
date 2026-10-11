@@ -5,7 +5,7 @@ description: Protocol for changing a novel's manuscript only with the author's v
 
 # validated-corrections
 
-Version: 0.7.0 (author skills, see CHANGELOG)
+Version: 0.7.1 (author skills, see CHANGELOG)
 
 The manuscript changes only by correction the author validated by id. The
 calling skill names its report file, its id prefix and what a correction
@@ -38,10 +38,9 @@ certainty.
   change, never the author's answer.
 - A change applied to the whole chapter (a typographic form) is one row
   with its count.
-- A row may offer alternatives, separated by `|`, when the calling skill
-  allows it. The author validates it by naming one, by number or text, or
-  by giving their own word (`E4-001 : 2`, `E4-001 : la veilleuse`); `tout`
-  and `les certaines` leave it open.
+- A row may offer numbered alternatives, separated by `|`, when the
+  calling skill allows it. Each is the whole extract as it will be
+  applied.
 
 ## Presenting
 
@@ -52,7 +51,18 @@ exactly these answers, each with the number of rows it covers:
 - `tout`: every row;
 - `les certaines`: only the `certaine` rows;
 - ids (`P3-001, P3-004`) or ranges (`P3-001..P3-009`);
-- `tout sauf P3-007`.
+- `tout sauf P3-007`;
+- for a row with alternatives, its id with a number or the author's own
+  word (`E4-001 : 2`, `E4-003 : la veilleuse`), several separated by
+  commas.
+
+Offer only the answers that cover at least one row. A row with
+alternatives is validated only by the last form: `tout`, `les certaines`,
+an id or a range alone leave it open. The author's own word is applied as
+given when no other word of the extract has to change; when it needs
+another change (an agreement: « le fanal voisin » becomes « la veilleuse
+voisine »), it is added to the row as the next alternative, shown in full,
+and the row stays open until the author names it.
 
 Only these forms validate a row. A question, a remark or a wish is
 answered, then the choice is offered again with the rows still open.
