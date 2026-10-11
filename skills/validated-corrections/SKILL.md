@@ -5,7 +5,7 @@ description: Protocol for changing a novel's manuscript only with the author's v
 
 # validated-corrections
 
-Version: 0.5.0 (author skills, see CHANGELOG)
+Version: 0.5.1 (author skills, see CHANGELOG)
 
 The manuscript changes only by correction the author validated by id. The
 calling skill names its report file, its id prefix and what a correction
@@ -47,9 +47,11 @@ and does not propose that extract again.
 ## Applying
 
 1. Say in one line which rows will be applied and which stay open.
-2. Apply each validated row on its line, nothing else. A row whose extract
-   no longer occurs exactly once on its line is skipped, and said so.
-   Whole-chapter rows are applied last.
+2. Apply each validated row on its line, nothing else, from the last line
+   of the chapter to the first: a row that adds or removes lines (a split
+   paragraph, a scene break) then leaves the line numbers of the rows still
+   to apply intact. A row whose extract no longer occurs exactly once on
+   its line is skipped, and said so. Whole-chapter rows are applied last.
 3. Mark applied rows `appliqué` in the report.
 4. Tell the author to review with `git diff`.
 

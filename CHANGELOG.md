@@ -3,6 +3,12 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.5.1 (2026-10-11)
+
+`validated-corrections` applies rows from the last line to the first, so
+rows that split a paragraph or remove a scene break keep the other rows'
+line numbers valid. The first 0.5.0 run did it right without the rule.
+
 ## 0.5.0 (2026-10-11)
 
 - **New `NOVEL.md` field** `scene_break` (default `"* * *"`). Add it to
