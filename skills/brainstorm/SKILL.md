@@ -7,7 +7,7 @@ argument-hint: "[l'idée, même floue]"
 
 # brainstorm
 
-Version: 0.5.1 (author skills, see CHANGELOG)
+Version: 0.6.0 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, the bible, the manuscript, the idea. Output:
 `notes/ideas/<slug>.md`. Refuse to run without `NOVEL.md`: point to

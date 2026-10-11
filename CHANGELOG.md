@@ -3,6 +3,16 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.6.0 (2026-10-11)
+
+From the second proofreading run:
+
+- A construction error that no word replacement fixes gets the smallest
+  rewording of its clause, `à confirmer`, with a **Règle** starting with
+  `reformulation :`. ADR 0003 is amended to allow it.
+- Comparisons between terms that do not compare are in scope, `à
+  confirmer`.
+
 ## 0.5.1 (2026-10-11)
 
 `validated-corrections` applies rows from the last line to the first, so

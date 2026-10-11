@@ -22,6 +22,13 @@ skills with their reason:
    the error's span is replaced: no rewording, no reordering. Adding or
    removing a scene-break marker, or splitting a paragraph, is a correction
    too. `validated-corrections` holds the protocol.
+   Amended 2026-10-11 after the second proofreading run: a construction
+   error that no word replacement fixes (a detached participle, a
+   comparison between unlike terms) gets the smallest rewording of its
+   clause, always `à confirmer` and labelled `reformulation`. Leaving the
+   row without a correction pushed the work back on the author for errors
+   whose fix is mechanical; the label and the validation keep the voice
+   theirs.
 3. **Proofreading never touches style.** Repetition, word choice, rhythm and
    continuity are out of scope; a deliberate deviation (oral speech, a
    tense shift) is reported as uncertain, never as certain.

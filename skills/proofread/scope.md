@@ -22,7 +22,9 @@ author's intent. Each reading applies one family to every sentence.
   deliberate nominal sentence; a detached participle or adjective whose
   implied subject is not the sentence's subject (« En ouvrant la porte, le
   vent s'engouffra »); a conditional after a hypothetical *si*
-  (after a *si* of opposition, `à confirmer`); a missing word.
+  (after a *si* of opposition, `à confirmer`); a comparison between terms
+  that do not compare (« Contrairement à Paris, Jean aimait le calme »),
+  `à confirmer`; a missing word.
 - **Grammaire**: missing *ne*, wrong prepositions, wrong pronouns (*dont*,
   *duquel*, *leur*/*leurs*), homophones (*a*/*à*, *ces*/*ses*, *dont*/*donc*,
   *quand*/*quant*, *ou*/*où*, infinitive against past participle).

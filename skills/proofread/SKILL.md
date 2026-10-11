@@ -7,7 +7,7 @@ argument-hint: "[chapitres, ex. ch3 | ch3-ch7 | tout]"
 
 # proofread
 
-Version: 0.5.1 (author skills, see CHANGELOG)
+Version: 0.6.0 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, `bible/LEXICON.md` and `.proofread/intentional.md` if
 they exist, the chapters named in the argument (ask if none). Output:
@@ -84,13 +84,19 @@ Lecture : 5 lots × 2 familles, couverture complète
 | P3-001 | 12 | « les lettres qu'il avait écrit » | « les lettres qu'il avait écrites » | accord du participe passé avec avoir, COD avant | lecture A | certaine |
 | P3-002 | 40 | « Elle entre dans la salle » | « Elle entra dans la salle » | temps de narration : passé simple | lecture A | à confirmer |
 | P3-003 | 58 | « J'arrive. Elle posa » | « J'arrive. ¶ Elle posa » | narration collée à une réplique | lecture B | à confirmer |
-| P3-004 | tout le chapitre | 196 × « ' » | « ’ » | apostrophe (`NOVEL.md`) | typographie | certaine |
+| P3-004 | 71 | « En ouvrant la porte, le vent s'engouffra » | « Quand il ouvrit la porte, le vent s'engouffra » | reformulation : participe détaché dont le sujet implicite n'est pas celui de la phrase | lecture A | à confirmer |
+| P3-005 | tout le chapitre | 196 × « ' » | « ’ » | apostrophe (`NOVEL.md`) | typographie | certaine |
 ```
 
 **Source**: `grammalecte`, `typographie`, `lecture A` or `lecture B`; it
 shows which step finds what, and which one missed an error found later.
 A `¶` in a correction is a paragraph break: the line is split in two, with
 a blank line between.
+
+A construction error that no word replacement fixes gets the smallest
+rewording of its clause: `à confirmer`, and its **Règle** starts with
+`reformulation :`. Keep the author's words and order wherever the fix
+allows.
 
 ## 5. Validate and apply
 

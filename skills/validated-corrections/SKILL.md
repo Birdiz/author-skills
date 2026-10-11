@@ -5,7 +5,7 @@ description: Protocol for changing a novel's manuscript only with the author's v
 
 # validated-corrections
 
-Version: 0.5.1 (author skills, see CHANGELOG)
+Version: 0.6.0 (author skills, see CHANGELOG)
 
 The manuscript changes only by correction the author validated by id. The
 calling skill names its report file, its id prefix and what a correction
@@ -18,7 +18,9 @@ Every proposed change is one row: id, line, extract, correction, reason,
 certainty.
 
 - **Extract**: verbatim, long enough to occur once on its line.
-- **Correction**: the same extract with only the change made. Two changes
+- **Correction**: the same extract with only the change made, or, where
+  the calling skill allows a reformulation, the smallest rewording of the
+  clause that fixes it. Two changes
   close enough to share words are one row, so no row invalidates another.
 - **Certainty**: `certaine` when a reference rule settles it whatever the
   intent; `à confirmer` when it could be deliberate. It describes the
