@@ -7,7 +7,7 @@ argument-hint: "[nom du lieu ou du système]"
 
 # build-world
 
-Version: 0.7.1 (author skills, see CHANGELOG)
+Version: 0.7.2 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, the bible, the manuscript. Output:
 `bible/world/places/<slug>.md` or `bible/world/systems/<slug>.md`, lexicon

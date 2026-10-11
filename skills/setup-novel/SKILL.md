@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # setup-novel
 
-Version: 0.7.1 (author skills, see CHANGELOG)
+Version: 0.7.2 (author skills, see CHANGELOG)
 
 Write `NOVEL.md` at the root of the novel project. Talk to the author in
 the language they write to you in, and once detected, the novel's. Every other skill refuses

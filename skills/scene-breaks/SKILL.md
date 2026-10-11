@@ -7,7 +7,7 @@ argument-hint: "[chapitres, ex. ch1 | ch1-ch3 | tout]"
 
 # scene-breaks
 
-Version: 0.7.1 (author skills, see CHANGELOG)
+Version: 0.7.2 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md` (`scene_break`, the marker line), the chapters named in
 the argument (ask if none), `.scenes/intentional.md` if it exists.

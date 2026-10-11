@@ -3,6 +3,19 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.7.2 (2026-10-11)
+
+From the first `echoes` run, where every row needed a typed choice:
+
+- `validated-corrections`: when the agent has a multiple-choice question
+  tool, rows are validated through a form, four per call: the `certaine`
+  rows in one question, then each other row with its alternatives or
+  `Appliquer`, and `Garder (voulu)`, which records it as deliberate. The
+  free-text answer is the author's own word. Typed answers stay as the
+  fallback.
+- `echoes`: two or three alternatives per row, so that they fit the form
+  with `Garder (voulu)`.
+
 ## 0.7.1 (2026-10-11)
 
 From the first review of `echoes`, which silenced real echoes:

@@ -7,7 +7,7 @@ argument-hint: "[chapitres, ex. ch2 | ch1-ch3 | tout]"
 
 # echoes
 
-Version: 0.7.1 (author skills, see CHANGELOG)
+Version: 0.7.2 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, `bible/LEXICON.md` and `.echoes/intentional.md` if they
 exist, the chapters named in the argument (ask if none). Output:
@@ -120,7 +120,7 @@ Write `.echoes/<chapter-id>.md`, replacing the previous report:
 ```
 
 - **Remplacements**: one row per occurrence to vary. **Correction** lists
-  three to five numbered alternatives separated by `|`, each the whole
+  two or three numbered alternatives separated by `|`, each the whole
   extract with one word or short phrase changed (and the agreements that
   change requires), or the word removed when the sentence stands without
   it. Never abbreviate an alternative: it is applied as written.
@@ -136,9 +136,11 @@ Write `.echoes/<chapter-id>.md`, replacing the previous report:
 ## 4. Validate and apply
 
 Per `validated-corrections`, with ids `E<N>-<NNN>` and
-`.echoes/intentional.md` (`## Refusés`). Every row has alternatives, so
-the author answers each one by number or by their own word (`E4-001 : 2`,
-`E4-003 : la veilleuse`).
+`.echoes/intentional.md`. Every row has alternatives, so the form carries
+most of the work: the author clicks an alternative, gives their own word,
+or clicks `Garder (voulu)`, which puts the extract under `## Refusés`.
+Typed, the author answers each row by number or by their own word
+(`E4-001 : 2`, `E4-003 : la veilleuse`).
 
 ## Done
 

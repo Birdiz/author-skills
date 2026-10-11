@@ -5,7 +5,7 @@ description: Protocol for changing a novel's manuscript only with the author's v
 
 # validated-corrections
 
-Version: 0.7.1 (author skills, see CHANGELOG)
+Version: 0.7.2 (author skills, see CHANGELOG)
 
 The manuscript changes only by correction the author validated by id. The
 calling skill names its report file, its id prefix and what a correction
@@ -45,8 +45,37 @@ certainty.
 ## Presenting
 
 In the novel's language, with the author's form of address (tu or vous):
-the counts per certainty, then every `à confirmer` row in full. Then offer
-exactly these answers, each with the number of rows it covers:
+the counts per certainty first. Then the rows, through the form when the
+agent has a multiple-choice question tool, typed answers otherwise.
+
+### Form
+
+The author clicks instead of typing ids, so a report of thirty rows does
+not cost thirty typed answers.
+
+1. When there are `certaine` rows, one question first: `Appliquer les N
+   certaines` or `Les passer en revue` (they then go through the form with
+   the others).
+2. The other rows four per call, one question per row: the id as header,
+   the line, the extract and the reason as question. Options:
+   - a row with alternatives: its alternatives (three at most), each in
+     full, then `Garder (voulu)`;
+   - a row without: `Appliquer`, with the correction in full, then
+     `Garder (voulu)`.
+
+   The free-text answer is the author's own word, under the rule below,
+   or a remark, answered before the row is asked again. An own word that
+   needs another change comes back as its own question: `Appliquer` with
+   the version in full, or `Revoir les alternatives`.
+3. Then the typed answers, below, for any row still open.
+
+A click validates or refuses its row like the typed answers do;
+`Garder (voulu)` is a refusal as deliberate.
+
+### Typed answers
+
+Every `à confirmer` row in full, then exactly these answers, each with the
+number of rows it covers:
 
 - `tout`: every row;
 - `les certaines`: only the `certaine` rows;
@@ -64,8 +93,9 @@ another change (an agreement: « le fanal voisin » becomes « la veilleuse
 voisine »), it is added to the row as the next alternative, shown in full,
 and the row stays open until the author names it.
 
-Only these forms validate a row. A question, a remark or a wish is
-answered, then the choice is offered again with the rows still open.
+Only these forms and the form's options validate a row. A question, a
+remark or a wish is answered, then the choice is offered again with the
+rows still open.
 
 A row the author refuses as deliberate goes into the calling skill's
 `intentional.md` (chapter id, extract, reason). Every later run reads it
