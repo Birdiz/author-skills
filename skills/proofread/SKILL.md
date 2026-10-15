@@ -7,10 +7,11 @@ argument-hint: "[chapitres, ex. ch3 | ch3-ch7 | tout]"
 
 # proofread
 
-Version: 0.7.2 (author skills, see CHANGELOG)
+Version: 0.7.3 (author skills, see CHANGELOG)
 
-Input: `NOVEL.md`, `bible/LEXICON.md` and `.proofread/intentional.md` if
-they exist, the chapters named in the argument (ask if none). Output:
+Input: `NOVEL.md`, the lexicon (`LEXICON.md` under `bible.path`) and
+`.proofread/intentional.md` if they exist, the chapters named in the
+argument (ask if none). Output:
 `.proofread/<chapter-id>.md`, then the validated corrections, per
 `validated-corrections`. Refuse to run without `NOVEL.md`: point to
 `/setup-novel`.
@@ -46,11 +47,12 @@ Run [the typography script](scripts/typography.py) on the chapter:
 ```
 python3 scripts/typography.py <chapter> --apostrophe ’ --ellipsis … \
   --space-before-high nnbsp|nbsp|space --quotes «» \
-  --quote-space nnbsp|nbsp|space --dialogue-dash — --scene-break "* * *"
+  --quote-space nnbsp|nbsp|space --dialogue-dash — --scene-break "<scene_break>"
 ```
 
-The path is relative to this skill's directory. Map each `NOVEL.md`
-typography key to its option (`ignore` where the author chose it; an
+The path is relative to this skill's directory. `--scene-break` is
+`scene_break` in `NOVEL.md`. Map each `NOVEL.md` typography key to its
+option (`ignore` where the author chose it; an
 ordinary space is `space`, U+00A0 `nbsp`, U+202F `nnbsp`). Its rows are
 `certaine`, except dialogue lines when `dialogue: lenient`.
 

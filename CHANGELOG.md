@@ -3,6 +3,15 @@
 File formats (`NOVEL.md`, bible files, facts, findings, proofreading
 reports) are a public interface: a change to one is listed here.
 
+## 0.7.3 (2026-10-15)
+
+- `echoes` and `proofread` take the chapters, the lexicon and the
+  scene-break marker from `NOVEL.md` (`chapters`, `bible.path`,
+  `scene_break`) instead of fixed paths.
+- `echoes.py --focus`: reports only the named chapters, while every chapter
+  still counts for the novel's tics. The output lists `files`, the order
+  of each tic's densities.
+
 ## 0.7.2 (2026-10-11)
 
 From the first `echoes` run, where every row needed a typed choice:

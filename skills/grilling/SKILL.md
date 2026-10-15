@@ -5,7 +5,7 @@ description: Interview the author in rounds until every branch of a character, p
 
 # grilling
 
-Version: 0.7.2 (author skills, see CHANGELOG)
+Version: 0.7.3 (author skills, see CHANGELOG)
 
 The interview primitive behind `setup-novel`, `build-character`,
 `build-world`, `brainstorm` and `check-continuity`'s arbitration. Adapted

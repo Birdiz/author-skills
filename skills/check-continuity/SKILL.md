@@ -7,7 +7,7 @@ argument-hint: "[characters|situations|world ...] [chapitres]"
 
 # check-continuity
 
-Version: 0.7.2 (author skills, see CHANGELOG)
+Version: 0.7.3 (author skills, see CHANGELOG)
 
 Input: `NOVEL.md`, the manuscript, the bible. Output: `.continuity/facts/`,
 `.continuity/findings/<axis>.md` per `continuity-findings`, and what the

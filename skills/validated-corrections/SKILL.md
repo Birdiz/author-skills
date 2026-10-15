@@ -5,7 +5,7 @@ description: Protocol for changing a novel's manuscript only with the author's v
 
 # validated-corrections
 
-Version: 0.7.2 (author skills, see CHANGELOG)
+Version: 0.7.3 (author skills, see CHANGELOG)
 
 The manuscript changes only by correction the author validated by id. The
 calling skill names its report file, its id prefix and what a correction

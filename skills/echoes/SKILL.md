@@ -7,10 +7,10 @@ argument-hint: "[chapitres, ex. ch2 | ch1-ch3 | tout]"
 
 # echoes
 
-Version: 0.7.2 (author skills, see CHANGELOG)
+Version: 0.7.3 (author skills, see CHANGELOG)
 
-Input: `NOVEL.md`, `bible/LEXICON.md` and `.echoes/intentional.md` if they
-exist, the chapters named in the argument (ask if none). Output:
+Input: `NOVEL.md`, the lexicon (`LEXICON.md` under `bible.path`) and
+`.echoes/intentional.md` if they exist, the chapters named in the argument (ask if none). Output:
 `.echoes/<chapter-id>.md`, then the word replacements the author chose,
 per `validated-corrections`. Refuse to run without `NOVEL.md`: point to
 `/setup-novel`.
@@ -21,15 +21,19 @@ images are prompts. No sentence is written for the author.
 
 ## 1. Count
 
-Run [the script](scripts/echoes.py) on the named chapters, plus every
-other chapter for the cross-chapter tics:
+Run [the script](scripts/echoes.py) on every chapter, for the
+cross-chapter tics, and focus it on the named ones:
 
 ```
-python3 scripts/echoes.py manuscript/*.md --lexicon bible/LEXICON.md \
-  --intentional .echoes/intentional.md --scene-break "* * *"
+python3 scripts/echoes.py <chapters> --lexicon <bible.path>/LEXICON.md \
+  --intentional .echoes/intentional.md --scene-break "<scene_break>" \
+  --focus <named chapters>
 ```
 
-The path is relative to this skill's directory. It returns, per chapter:
+The script's path is relative to this skill's directory, the others to the
+novel's root. `<chapters>` is the `chapters` pattern of `NOVEL.md`,
+`<bible.path>` and `<scene_break>` its values; `--focus` takes the files of
+the chapters named in the argument. It returns, per focused chapter:
 
 - **echoes**: one word family twice or more within about 50 words;
 - **concentrations**: one family four times or more within about 400
@@ -37,7 +41,8 @@ The path is relative to this skill's directory. It returns, per chapter:
 - **overuse**, **gestures** (regarder, s'arrêter, poser, se retourner…),
   **weak verbs** (faire, mettre, sembler, commencer à, chose) and
   **-ment adverbs** with their clusters;
-- across chapters, **novel** tics: families dense in most chapters.
+- across chapters, **novel** tics: families dense in most chapters, with
+  their density per file in the order of `files`.
 
 Families come from a light stemmer and can merge different words
 (« porte », « porta »): the script finds candidates, it does not decide.

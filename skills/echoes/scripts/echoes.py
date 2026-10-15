@@ -10,7 +10,9 @@ light suffix-stripping stemmer, so a family can merge homographs
 """
 import argparse
 import json
+import os
 import re
+import sys
 from collections import defaultdict
 
 WORD = re.compile(r"[a-zàâäçéèêëîïôöùûüœæ]+(?:-[a-zàâäçéèêëîïôöùûüœæ]+)*")
@@ -280,7 +282,14 @@ def main():
     p.add_argument("--zone-count", type=int, default=4, help="occurrences that make a concentration")
     p.add_argument("--min-count", type=int, default=5)
     p.add_argument("--top", type=int, default=25)
+    p.add_argument("--focus", nargs="+", metavar="CHAPTER",
+                   help="chapters to report on; the others count only for novel tics")
     a = p.parse_args()
+    same = lambda path: os.path.normpath(os.path.abspath(path))
+    focus = {same(f) for f in a.focus or a.chapters}
+    missing = focus - {same(c) for c in a.chapters}
+    if missing:
+        p.error("--focus names files that are not among the chapters: " + ", ".join(sorted(missing)))
 
     excluded = {"phrases": lexicon_phrases(a.lexicon),
                 "motifs": motif_stems(a.intentional),
@@ -288,11 +297,12 @@ def main():
     chapters, densities = [], []
     for path in a.chapters:
         report, density = analyse(path, a, excluded)
-        chapters.append(report)
+        if same(path) in focus:
+            chapters.append(report)
         densities.append(density)
 
     novel = []
-    if len(chapters) >= 2:
+    if len(densities) >= 2:
         families = set().union(*densities)
         for f in families:
             values = [d.get(f, 0) for d in densities]
@@ -301,8 +311,8 @@ def main():
                 novel.append({"family": f, "per_1000_by_chapter": values,
                               "gesture": f in GESTURES})
         novel.sort(key=lambda x: -sum(x["per_1000_by_chapter"]))
-    json.dump({"chapters": chapters, "novel": novel[: a.top]}, __import__("sys").stdout,
-              ensure_ascii=False, indent=1)
+    json.dump({"files": a.chapters, "chapters": chapters, "novel": novel[: a.top]},
+              sys.stdout, ensure_ascii=False, indent=1)
     print()
 
 

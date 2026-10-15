@@ -124,5 +124,42 @@ class Analyse(unittest.TestCase):
         self.assertEqual(families(report, "gestures")["pos"], 5)
 
 
+class Focus(unittest.TestCase):
+    CHAPTERS = {
+        "01.md": "Il regarda la mer. Il regarda le ciel. Il regarda encore.\n",
+        "02.md": "Elle regarda la route, regarda les arbres, regarda au loin.\n",
+        "03.md": "Ils regardèrent le feu, regardèrent la nuit, regardèrent tout.\n",
+    }
+
+    def run_focus(self, *focus):
+        with tempfile.TemporaryDirectory() as tmp:
+            paths = []
+            for name, text in self.CHAPTERS.items():
+                (Path(tmp) / name).write_text(text, encoding="utf-8")
+                paths.append(str(Path(tmp) / name))
+            args = [sys.executable, str(SCRIPT), *paths]
+            if focus:
+                args += ["--focus", *(str(Path(tmp) / f) for f in focus)]
+            result = subprocess.run(args, capture_output=True, text=True)
+        return result, paths
+
+    def test_focus_reports_only_named_chapters(self):
+        result, paths = self.run_focus("02.md")
+        out = json.loads(result.stdout)
+        self.assertEqual([c["file"] for c in out["chapters"]], [paths[1]])
+        self.assertEqual(out["files"], paths)
+        regard = next(n for n in out["novel"] if n["family"] == "regard")
+        self.assertEqual(len(regard["per_1000_by_chapter"]), 3)
+
+    def test_no_focus_reports_every_chapter(self):
+        result, _ = self.run_focus()
+        self.assertEqual(len(json.loads(result.stdout)["chapters"]), 3)
+
+    def test_focus_outside_chapters_fails(self):
+        result, _ = self.run_focus("09.md")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("--focus", result.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
