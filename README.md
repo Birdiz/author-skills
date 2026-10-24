@@ -11,9 +11,11 @@ vocabulary ([CONTEXT.md](CONTEXT.md)) keeps them speaking the same language.
 
 ## Status
 
-Early. Every skill is written as a first version; none has run on a real
-manuscript yet. Grammalecte's command line is used through the flags its
-documentation lists, confirmed by `setup-novel` on the author's machine.
+Early. `setup-novel`, `proofread`, `scene-breaks` and `echoes` have run on
+a real manuscript, and the [changelog](CHANGELOG.md) records what those
+runs changed; the other skills are still first versions. Grammalecte's
+command line is used through the flags its documentation lists, confirmed
+by `setup-novel` on the author's machine.
 
 ## Install
 
