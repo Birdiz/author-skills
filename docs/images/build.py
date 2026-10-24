@@ -254,6 +254,27 @@ def banner(faces):
     return d
 
 
+def social_preview(faces):
+    d = Drawing(faces, 1280, 640, "author-skills",
+                "author skills: agent skills for writing a novel. A muse that "
+                "never writes for you.")
+    d.items.append(("fill", "paper", "M0 0h1280v640h-1280z", None))
+    crop_marks(d, 72, 64, 1208, 576)
+    mark(d, 120, 176, 220)
+    x = 396
+    d.text("author skills", "caps", 100, x, 262)
+    d.text("Agent skills for writing a novel.", "serif", 40, x, 342)
+    end = d.runs([("A muse that", "serif", 40, "ink")], x, 432)
+    insert = end + 16
+    d.text("writes for you.", "serif", 40, end + 32, 432)
+    d.text("never", "hand", 50, insert, 394, "pencil", anchor="middle")
+    caret(d, insert, 427, half=12, height=18, width=4.5)
+    d.line(120, 486, 1160, 486, "rule", 1.5)
+    d.text("proofreading · echoes · scene breaks · characters and worlds · "
+           "continuity · a muse", "serif", 24, 120, 532, "graphite")
+    return d
+
+
 STEPS = [
     ("Set up", ["/setup-novel"],
      "Once. Language, tense, point of view, typography."),
@@ -387,6 +408,8 @@ def main():
     faces = load_faces()
     with open(os.path.join(HERE, "logo.svg"), "w") as f:
         f.write(logo(faces).render("light"))
+    with open(os.path.join(HERE, "social-preview.svg"), "w") as f:
+        f.write(social_preview(faces).render("light"))
     for name, build in (("banner", banner), ("workflow", workflow),
                         ("golden-rule", golden_rule)):
         drawing = build(faces)

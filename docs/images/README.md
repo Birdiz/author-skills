@@ -34,3 +34,14 @@ python3 docs/images/build.py
 Words are drawn as outlines, since an `<img>` cannot load web fonts, so
 the SVG files are not edited by hand. The fonts are downloaded from
 google/fonts into `docs/images/.fonts/` on the first run.
+
+## Social preview
+
+`social-preview.png` is the card shown when the repository's link is
+shared. GitHub takes it only as an upload, under Settings → General →
+Social preview, so after changing `social-preview.svg`, rasterise it and
+upload it again:
+
+```
+rsvg-convert -w 1280 -h 640 docs/images/social-preview.svg -o docs/images/social-preview.png
+```
