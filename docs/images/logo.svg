@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">author-skills</title>
+<desc id="desc">A serif letter a above a blue proofreader's insertion caret.</desc>
+<defs>
+<path id="g0" d="M156 -10Q109 -10 78 17.5Q47 45 47 94Q47 143 83.5 179Q120 215 206 235L301 257V330Q301 365 275.5 389.5Q250 414 215 414Q201 414 187 411Q173 408 150 397V305H86Q70 305 63.5 312.5Q57 320 57 339Q57 367 81 395Q105 423 146.5 441.5Q188 460 240 460Q312 460 346.5 430.5Q381 401 381 351V67Q388 60 401.5 55Q415 50 437 50H475L478 48V45Q466 23 442.5 6.5Q419 -10 385 -10Q354 -10 334.5 6.5Q315 23 307 50H301Q275 25 236.5 7.5Q198 -10 156 -10ZM125 114Q125 52 200 52Q224 52 247.5 57Q271 62 301 75V223Q221 208 184 191.5Q147 175 136 156Q125 137 125 114Z"/>
+</defs>
+<path fill="#FFFFFF" d="M0 0h512v512h-512z"/>
+<path fill="none" stroke="#15171C" stroke-width="7.1" stroke-linecap="round" stroke-linejoin="round" d="M96 96h320v320h-320z"/>
+<g fill="#15171C">
+<use href="#g0" transform="translate(195 276.8) scale(0.2496 -0.2496)"/>
+</g>
+<path fill="none" stroke="#2F5BD3" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M192 350.4L256 302.4L320 350.4"/>
+</svg>
