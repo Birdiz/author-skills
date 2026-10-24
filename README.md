@@ -124,6 +124,15 @@ user-invoked one.
 The scripts' tests run with the standard library:
 `python3 -m unittest discover tests`.
 
+## Releases
+
+Bumping `version` in `.claude-plugin/plugin.json` on `main` releases it:
+the [release workflow](.github/workflows/release.yml) runs the tests, then
+tags `v<version>` and publishes a GitHub Release whose notes are that
+version's `CHANGELOG.md` entry. A version without an entry fails the
+workflow. A version that already has a tag is skipped, and the workflow
+can be run by hand to release the current version.
+
 ## Language
 
 Skills are written in English. Templates, questions and everything the

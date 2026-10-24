@@ -1,0 +1,80 @@
+# Tags and publishes a GitHub Release when the version in plugin.json has no
+# tag yet. The release notes are the CHANGELOG.md entry for that version, so
+# a version without an entry fails instead of shipping empty notes.
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths: [.claude-plugin/plugin.json]
+  # Releases the current version by hand, e.g. one bumped before this
+  # workflow existed.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version
+        id: version
+        run: |
+          version=$(jq -r .version .claude-plugin/plugin.json)
+          if [[ ! $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error file=.claude-plugin/plugin.json::Version '$version' is not X.Y.Z."
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
+      - name: Check for an existing tag
+        id: tag
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+            echo "$TAG already exists; nothing to release."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run tests
+        if: steps.tag.outputs.exists == 'false'
+        run: python3 -m unittest discover tests
+
+      - name: Extract release notes
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          # The entry runs from "## <version> (" to the next "## " heading.
+          awk -v heading="## $VERSION (" '
+            index($0, heading) == 1 { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md | sed '/./,$!d' > notes.md
+          if [[ ! -s notes.md ]]; then
+            echo "::error file=CHANGELOG.md::No entry for $VERSION."
+            exit 1
+          fi
+
+      - name: Publish release
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          gh release create "$TAG" \
+            --target "$GITHUB_SHA" \
+            --title "$VERSION" \
+            --notes-file notes.md
